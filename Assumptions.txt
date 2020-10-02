@@ -1,0 +1,7 @@
+
+
+1. That input can be a malformed attempt at JSON and should trigger an error.
+3. That Create, Retrieve, Update and Destroy operations should be implemented to some extent.
+4. That Retrieval is of the Output format contracted.
+5. That Update is not implemented because we don't lose the input file and can modify it running the program again.
+5. That Creation is going to be any JSON including a File with one line of JSON per new line.
