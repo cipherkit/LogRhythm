@@ -2,10 +2,11 @@
 Given a set of JSON objects (in a file is fine), for each unique ID field show the unique IPs associated with it and
 the number of times that IP appeared.  Also, sum the score for that ID.  Make no assumptions about the incoming JSON.
 Example input:
-{"id":"test","score":12,"ip":"1.2.3.4","message":"Hi"}
-{"id":"test","score":5,"ip":"1.2.3.5"}
-{"id":"test","score":17,"ip":"1.2.3.4"}
-{"id":"test2","score":9,"ip":"1.2.3.4"}
+
+    {"id":"test","score":12,"ip":"1.2.3.4","message":"Hi"}
+    {"id":"test","score":5,"ip":"1.2.3.5"}
+    {"id":"test","score":17,"ip":"1.2.3.4"}
+    {"id":"test2","score":9,"ip":"1.2.3.4"}
 
 ### Example output:
 
@@ -25,17 +26,21 @@ want to use is fine.  Send back the source code for each, along with any assumpt
 
         instance = Parser()
         instance.data_in(data) # where data is a valid JSON string
+        # List inputs
+        print(parse.object_list)
+        # object representation
+        print(repr(parse))
+        # string output
         print(instance)
         instance.clear()
         ... Do something else with it ...
-
 
 ### Desirable Feature List:
 
 * Create json input &#x2611;
 * Clear object &#x2611;
 * Output a str &#x2611;
-* Output an object
+* Output an object &#x2611;
 * Create file input
 * Logging
 * Update input
