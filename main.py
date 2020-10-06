@@ -67,8 +67,14 @@ class Parser(object):
             string_out = string_out + f"{key}\n{value['ips']}\nscore: {value['score']}\n"
         return string_out
 
+    def file_input(self, file_data):
+        for line in file_data:
+            obj = json.loads(str(line))
+            self.object_list.append(obj)
+
 
 if __name__ == "__main__":
+    # example 1
     parse = Parser()
     parse.data_in('{"id": "test", "score": 12, "ip": "1.2.3.4", "message": "Hi"}')
     parse.data_in('{"id": "test", "score": 5, "ip": "1.2.3.5"}')
@@ -76,6 +82,8 @@ if __name__ == "__main__":
     parse.data_in('{"id": "test2", "score": 9, "ip": "1.2.3.4"}')
     print(parse)
     parse.clear()
+
+    # example 2
     parse.data_in('{"id": "test", "score": 5, "ip": "1.2.3.5"}')
     parse.data_in('{"id": "test", "score": 17, "ip": "1.2.3.4"}')
     parse.data_in('{"id": "test3", "score": 12, "ip": "1.2.3.4", "message": "Hi"}')
@@ -83,7 +91,11 @@ if __name__ == "__main__":
     parse.data_in('{"id": "test", "score": 17, "ip": "1.2.3.4"}')
     parse.data_in('{"id": "test2", "score": 9, "ip": "1.2.3.4"}')
     print(parse)
-
     print(repr(parse))
-
     print(parse.object_list)
+    parse.clear()
+
+    # example 3
+    with open("./example.json.txt") as f:
+        parse.file_input(f)
+        print(parse)

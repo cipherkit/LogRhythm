@@ -26,13 +26,22 @@ want to use is fine.  Send back the source code for each, along with any assumpt
 
         instance = Parser()
         instance.data_in(data) # where data is a valid JSON string
+        
         # List inputs
         print(parse.object_list)
+        
         # object representation
         print(repr(parse))
+        
         # string output
         print(instance)
         instance.clear()
+        
+        # File input
+        with open("./example.json.txt") as f:
+            parse.file_input(f)
+            print(parse)
+        
         ... Do something else with it ...
 
 ### Desirable Feature List:
@@ -41,10 +50,11 @@ want to use is fine.  Send back the source code for each, along with any assumpt
 * Clear object &#x2611;
 * Output a str &#x2611;
 * Output an object &#x2611;
-* Create file input
+* Create file input &#x2611;
 * Logging
 * Update input
 * String Formatting
+* Bottom-up implementation for parser to handle finding complicated json patterns
 * Command Line Interface
 
 ### Assumptions:
