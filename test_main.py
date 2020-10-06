@@ -11,7 +11,15 @@ class TestParser(unittest.TestCase):
         self.parse = Parser()
 
     def test_input_file(self):
-        self.assertEqual(True, False)
+        file_text = "./example.json.txt"
+        with open(file_text) as f:
+            self.parse.file_input(f)
+            expected = '[{"id":"test","score":12,"ip":"1.2.3.4","message":"Hi"},' \
+                       '{"id":"test","score":5,"ip":"1.2.3.5"},' \
+                       '{"id":"test","score":17,"ip":"1.2.3.4"},' \
+                       '{"id":"test2","score":9,"ip":"1.2.3.4"}]'
+            json_expectation = json.loads(expected)
+            self.assertEqual(json_expectation, self.parse.object_list)
 
     def test_data_in(self):
         string_input = '{"test": "id"}'
