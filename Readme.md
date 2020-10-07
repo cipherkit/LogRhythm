@@ -51,9 +51,9 @@ want to use is fine.  Send back the source code for each, along with any assumpt
 * Output a str &#x2611;
 * Output an object &#x2611;
 * Create file input &#x2611;
-* Logging
-* Update input
-* String Formatting
+* Logging &#x2611;
+* Update operation on input 
+* Revisit String Formatting
 * Bottom-up implementation for parser to handle finding complicated json patterns
 * Command Line Interface
 
@@ -63,4 +63,4 @@ want to use is fine.  Send back the source code for each, along with any assumpt
 3. That Create, Retrieve, Update and Destroy operations should be implemented to some extent.
 4. That Retrieval is of the Output format contracted. (I left dictionary curly brackets in the interest of time.)
 5. That Update is not implemented because we don't lose the input file and can modify it running the program again.
-6. That the input file should use a input system that is encapsulated. (File input feature left out in the interest of time.)
+6. That the input file should use a input system that is encapsulated.

@@ -1,4 +1,7 @@
 import json
+import logging as log
+
+log.basicConfig(format='%(asctime)s:%(levelname)s:%(message)s', level=log.DEBUG)
 
 
 class Parser(object):
@@ -17,20 +20,23 @@ class Parser(object):
     def __init__(self, file_data="{}"):
         self.object_list = []
         self.json_data = file_data
+        log.debug("New Parser instance created")
 
     def data_in(self, data):
         try:
             json_object = json.loads(data)
             self.add_to_output(json_object)
+            log.debug(f"New json input added {data}")
             return 201, "Object created!"
         except ValueError:
-            print(f"Value Error for: {data}")
+            log.error(f"Value Error for: {data}")
 
     def update(self):
         pass
 
     def clear(self):
         self.object_list = []
+        log.debug("Input cleared.")
         
     def add_to_output(self, json_object):
         self.object_list.append(json_object)
@@ -45,6 +51,7 @@ class Parser(object):
                 id_dictionary[obj['id']]['score'] = id_dictionary[obj['id']]['score'] + obj['score']
         for obj_id in id_dictionary:
             id_dictionary[obj_id]['ips'] = self.merge_ip_addresses(id_dictionary[obj_id]['ips'])
+        log.debug("input merged into a solution.")
         return id_dictionary
 
     @staticmethod
@@ -71,6 +78,7 @@ class Parser(object):
         for line in file_data:
             obj = json.loads(str(line))
             self.object_list.append(obj)
+        log.debug("File data loaded.")
 
 
 if __name__ == "__main__":
